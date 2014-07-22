@@ -62,7 +62,7 @@ module Clipbocellar
       end
     end
 
-    desc "search WORD", "Search texts"
+    desc "search WORD...", "Search texts"
     def search(*words)
       GroongaDatabase.new.open(@database_dir) do |database|
         sorted_clipboards = GroongaSearcher.search(database, words, options)

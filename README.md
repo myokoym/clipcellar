@@ -43,7 +43,7 @@ Show added texts (and set the latest text to clipboard)
 
 Full-text search (and set the latest text to clipboard)
 
-    $ clipbocellar search WORD
+    $ clipbocellar search WORD...
 
 Watch clipboard (Ctrl+C to stop)
 
