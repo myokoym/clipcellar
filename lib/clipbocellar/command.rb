@@ -7,9 +7,11 @@ require "clipbocellar/clipboard"
 module Clipbocellar
   class Command < Thor
     map "-v" => :version
-    map "-s" => :version
-    map "-a" => :version
-    map "-v" => :version
+    map "-a" => :set
+    map "-A" => :argf
+    map "-s" => :show
+    map "-S" => :search
+    map "-W" => :watch
 
     def initialize(*args)
       super
