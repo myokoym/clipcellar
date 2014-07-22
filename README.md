@@ -29,7 +29,7 @@ Show help
 
     $ clipbocellar
 
-Set a text or current clipboard
+Set a text or a current clipboard
 
     $ clipbocellar set [TEXT]
 
@@ -37,11 +37,11 @@ Set texts from ARGF
 
     $ clipbocellar argf [FILE_OR_STDIN]
 
-Show added texts
+Show added texts (and set the latest text to clipboard)
 
     $ clipbocellar show
 
-Full-text search
+Full-text search (and set the latest text to clipboard)
 
     $ clipbocellar search WORD
 
