@@ -58,7 +58,7 @@ module Clipbocellar
           date = record.date.strftime("%Y-%m-%d %H:%M:%S")
           puts "#{date} #{text}"
         end
-        Clipboard.set(text)
+        Clipboard.set(text) if text
       end
     end
 
@@ -73,7 +73,7 @@ module Clipbocellar
           date = record.date.strftime("%Y-%m-%d %H:%M:%S")
           puts "#{date} #{text}"
         end
-        Clipboard.set(text)
+        Clipboard.set(text) if text
       end
     end
 
