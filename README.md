@@ -29,39 +29,25 @@ Show help
 
     $ clipbocellar
 
-Register URL
+Set a text or current clipboard
 
-    $ clipbocellar register http://example.net/rss
+    $ clipbocellar set [TEXT]
 
-Import URL from OPML
+Set texts from ARGF
 
-    $ clipbocellar import registers.xml
+    $ clipbocellar argf [FILE_OR_STDIN]
 
-Export registerd resources to OPML to STDOUT
+Show added texts
 
-    $ clipbocellar export
+    $ clipbocellar show
 
-Show registers
+Full-text search
 
-    $ clipbocellar list
+    $ clipbocellar search WORD
 
-Collect feeds (It takes several minutes)
+Watch clipboard (Ctrl+C to stop)
 
-    $ clipbocellar collect
-
-Word search from titles and descriptions
-
-    $ clipbocellar search ruby
-
-Rich view by curses (set as default since 0.4.0)
-
-    $ clipbocellar search ruby --curses
-
-    Keybind:
-      j: down
-      k: up
-      f, ENTER: open the link on Firefox
-      q: quit
+    $ clipbocellar watch
 
 Delete database
 
