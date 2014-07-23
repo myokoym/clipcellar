@@ -11,6 +11,7 @@ module Clipbocellar
             yield(text)
           end
           current_text = text
+          true
         end
         Gtk.main
       end
