@@ -9,8 +9,8 @@ module Clipbocellar
           text = get
           if current_text != text
             yield(text)
-          end
           current_text = text
+          end
           true
         end
         Gtk.main
