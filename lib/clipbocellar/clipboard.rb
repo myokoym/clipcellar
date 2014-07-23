@@ -13,7 +13,12 @@ module Clipbocellar
           end
           true
         end
+
+        begin
         Gtk.main
+        rescue Interrupt => e
+          $stderr.puts(e.message)
+        end
       end
 
       def get
