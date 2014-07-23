@@ -53,9 +53,9 @@ module Clipbocellar
     def show
       GroongaDatabase.new.open(@database_dir) do |database|
         database.clipboards.each do |record|
-          text = record.text.gsub(/\n/, " ")
+          text = record.text
           date = record.date.strftime("%Y-%m-%d %H:%M:%S")
-          puts "#{date} #{text}"
+          puts "#{date} #{text.gsub(/\n/, ' ')}"
         end
       end
     end
@@ -67,9 +67,9 @@ module Clipbocellar
 
         text = nil
         sorted_clipboards.each do |record|
-          text = record.text.gsub(/\n/, " ")
+          text = record.text
           date = record.date.strftime("%Y-%m-%d %H:%M:%S")
-          puts "#{date} #{text}"
+          puts "#{date} #{text.gsub(/\n/, ' ')}"
         end
         Clipboard.set(text) if text
       end
