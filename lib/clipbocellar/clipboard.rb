@@ -15,7 +15,7 @@ module Clipbocellar
         end
 
         begin
-        Gtk.main
+          Gtk.main
         rescue Interrupt => e
           $stderr.puts(e.message)
         end
