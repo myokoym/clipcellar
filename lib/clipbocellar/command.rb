@@ -52,13 +52,11 @@ module Clipbocellar
     desc "show", "Show added clipboards"
     def show
       GroongaDatabase.new.open(@database_dir) do |database|
-        text = nil
         database.clipboards.each do |record|
           text = record.text.gsub(/\n/, " ")
           date = record.date.strftime("%Y-%m-%d %H:%M:%S")
           puts "#{date} #{text}"
         end
-        Clipboard.set(text) if text
       end
     end
 
