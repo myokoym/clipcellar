@@ -4,7 +4,7 @@ module Clipbocellar
   class Clipboard
     class << self
       def watch
-        current_text = ""
+        current_text = get
         GLib::Timeout.add(500) do
           text = get
           if current_text != text
