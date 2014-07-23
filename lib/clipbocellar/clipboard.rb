@@ -9,7 +9,7 @@ module Clipbocellar
           text = get
           if current_text != text
             yield(text)
-          current_text = text
+            current_text = text
           end
           true
         end
