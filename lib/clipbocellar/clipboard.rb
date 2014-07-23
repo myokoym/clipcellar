@@ -5,7 +5,7 @@ module Clipbocellar
     class << self
       def watch
         current_text = ""
-        GLib::Timeout.add(100) do
+        GLib::Timeout.add(500) do
           text = get
           if current_text != text
             yield(text)
