@@ -1,6 +1,6 @@
 require "groonga"
 
-module Clipbocellar
+module Clipcellar
   class GroongaDatabase
     def initialize
       @database = nil
@@ -8,7 +8,7 @@ module Clipbocellar
 
     def open(base_path, encoding=:utf8)
       reset_context(encoding)
-      path = File.join(base_path, "clipbocellar.db")
+      path = File.join(base_path, "clipcellar.db")
       if File.exist?(path)
         @database = Groonga::Database.open(path)
         populate_schema

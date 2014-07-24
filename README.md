@@ -1,6 +1,6 @@
-# Clipbocellar
+# Clipcellar
 
-Clipbocellar is a full-text searchable storage for clipboard.
+Clipcellar is a full-text searchable storage for clipboard.
 
 Powered by [GTK+][] (via [Ruby/GTK3][]) and [Groonga][] (via [Rroonga][]).
 
@@ -13,7 +13,7 @@ Powered by [GTK+][] (via [Ruby/GTK3][]) and [Groonga][] (via [Rroonga][]).
 
 Add this line to your application's Gemfile:
 
-    gem 'clipbocellar'
+    gem 'clipcellar'
 
 And then execute:
 
@@ -21,37 +21,37 @@ And then execute:
 
 Or install it yourself as:
 
-    $ gem install clipbocellar
+    $ gem install clipcellar
 
 ## Usage
 
 Show help
 
-    $ clipbocellar
+    $ clipcellar
 
 Set a text or a current clipboard
 
-    $ clipbocellar set [TEXT]
+    $ clipcellar set [TEXT]
 
 Set texts from ARGF
 
-    $ clipbocellar argf [FILE_OR_STDIN]
+    $ clipcellar argf [FILE_OR_STDIN]
 
 Show added texts (and set the latest text to clipboard)
 
-    $ clipbocellar show
+    $ clipcellar show
 
 Full-text search (and set the latest text to clipboard)
 
-    $ clipbocellar search WORD...
+    $ clipcellar search WORD...
 
 Watch clipboard (Ctrl+C to stop)
 
-    $ clipbocellar watch
+    $ clipcellar watch
 
 Delete database
 
-    $ rm -r ~/.clipbocellar
+    $ rm -r ~/.clipcellar
 
 ## License
 

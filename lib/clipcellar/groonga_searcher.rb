@@ -1,4 +1,4 @@
-module Clipbocellar
+module Clipcellar
   class GroongaSearcher
     class << self
       def search(database, words, options)

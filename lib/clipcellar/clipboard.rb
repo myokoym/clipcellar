@@ -1,6 +1,6 @@
 require "gtk3"
 
-module Clipbocellar
+module Clipcellar
   class Clipboard
     class << self
       def watch

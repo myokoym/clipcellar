@@ -1,5 +1,0 @@
-#!/usr/bin/env ruby
-
-require "clipbocellar/command"
-
-Clipbocellar::Command.start

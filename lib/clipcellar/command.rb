@@ -1,10 +1,10 @@
 require "thor"
-require "clipbocellar/version"
-require "clipbocellar/groonga_database"
-require "clipbocellar/groonga_searcher"
-require "clipbocellar/clipboard"
+require "clipcellar/version"
+require "clipcellar/groonga_database"
+require "clipcellar/groonga_searcher"
+require "clipcellar/clipboard"
 
-module Clipbocellar
+module Clipcellar
   class Command < Thor
     map "-v" => :version
     map "-a" => :set
@@ -15,13 +15,13 @@ module Clipbocellar
 
     def initialize(*args)
       super
-      @base_dir = File.join(File.expand_path("~"), ".clipbocellar")
+      @base_dir = File.join(File.expand_path("~"), ".clipcellar")
       @database_dir = File.join(@base_dir, "db")
     end
 
     desc "version", "Show version number."
     def version
-      puts Clipbocellar::VERSION
+      puts Clipcellar::VERSION
     end
 
     desc "set [TEXT]", "Set a text to clipboard"
