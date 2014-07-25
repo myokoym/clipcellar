@@ -37,7 +37,7 @@ Set texts from ARGF
 
     $ clipcellar argf [FILE_OR_STDIN]
 
-Show added texts (and set the latest text to clipboard)
+Show added texts
 
     $ clipcellar show
 
