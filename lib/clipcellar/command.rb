@@ -24,7 +24,7 @@ module Clipcellar
   class Command < Thor
     map "-v" => :version
     map "-a" => :set
-    map "-A" => :argf
+    map "-A" => :input
     map "-s" => :show
     map "-S" => :search
     map "-W" => :watch
@@ -47,8 +47,8 @@ module Clipcellar
       add(text)
     end
 
-    desc "argf [FILE]", "Add a text from files (or stdin)"
-    def argf(file=nil)
+    desc "input [FILE]", "Add a text from files (or stdin)"
+    def input(file=nil)
       ARGV.shift
       text = ""
       while line = ARGF.gets

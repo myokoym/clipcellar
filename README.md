@@ -35,7 +35,7 @@ Add a text (or clipboard) to storage
 
 Add a text from files (or stdin)
 
-    $ clipcellar argf [FILE]
+    $ clipcellar input [FILE]
 
 Show added texts in storage
 
