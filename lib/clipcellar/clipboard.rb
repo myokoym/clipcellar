@@ -15,7 +15,7 @@
 # Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
 
 begin
-require "gtk3"
+  require "gtk3"
 rescue Gtk::InitError
   # a window system is unnecessary.
 end
