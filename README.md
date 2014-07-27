@@ -29,19 +29,19 @@ Show help
 
     $ clipcellar
 
-Set a text or a current clipboard
+Add a text (or clipboard) to storage
 
     $ clipcellar set [TEXT]
 
-Set texts from ARGF
+Add a text from files (or stdin)
 
-    $ clipcellar argf [FILE_OR_STDIN]
+    $ clipcellar argf [FILE]
 
-Show added texts
+Show added texts in storage
 
     $ clipcellar show
 
-Full-text search (and set the latest text to clipboard)
+Full-text search (and set a text to clipboard)
 
     $ clipcellar search WORD...
 

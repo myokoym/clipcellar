@@ -40,14 +40,14 @@ module Clipcellar
       puts Clipcellar::VERSION
     end
 
-    desc "set [TEXT]", "Set a text to clipboard"
+    desc "set [TEXT]", "Add a text (or clipboard) to storage"
     def set(text=nil)
       text = Clipboard.get unless text
       Clipboard.set(text)
       add(text)
     end
 
-    desc "argf [FILE]", "Set texts from ARGF"
+    desc "argf [FILE]", "Add a text from files (or stdin)"
     def argf(file=nil)
       ARGV.shift
       text = ""
@@ -58,14 +58,14 @@ module Clipcellar
       add(text)
     end
 
-    desc "watch", "Watch clipboard"
+    desc "watch", "Watch clipboard to add clipboard to storage"
     def watch
       Clipboard.watch do |text|
         add(text)
       end
     end
 
-    desc "show", "Show added clipboards"
+    desc "show", "Show added texts in storage"
     def show
       GroongaDatabase.new.open(@database_dir) do |database|
         database.clipboards.each do |record|
@@ -76,7 +76,7 @@ module Clipcellar
       end
     end
 
-    desc "search WORD...", "Search texts"
+    desc "search WORD...", "Search texts from storage"
     def search(*words)
       GroongaDatabase.new.open(@database_dir) do |database|
         sorted_clipboards = GroongaSearcher.search(database, words, options)
