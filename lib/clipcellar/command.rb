@@ -43,6 +43,7 @@ module Clipcellar
     desc "set [TEXT]", "Add a text (or clipboard) to storage"
     def set(text=nil)
       text = Clipboard.get unless text
+      return unless text
       Clipboard.set(text)
       add(text)
     end
