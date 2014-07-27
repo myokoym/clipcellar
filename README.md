@@ -59,7 +59,7 @@ Copyright (c) 2014 Masafumi Yokoyama `<myokoym@gmail.com>`
 
 LGPLv2.1 or later.
 
-See 'license/lgpl-2.1.txt' or 'http://www.gnu.org/licenses/lgpl-2.1' for details.
+See LICENSE.txt or http://www.gnu.org/licenses/lgpl-2.1 for details.
 
 ## Contributing
 
