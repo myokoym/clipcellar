@@ -48,8 +48,8 @@ module Clipcellar
       add(text)
     end
 
-    desc "input [FILE]", "Add a text from files (or stdin)"
-    def input(file=nil)
+    desc "input [FILE]...", "Add a text from files (or stdin)"
+    def input(*files)
       ARGV.shift
       text = ""
       while line = ARGF.gets
