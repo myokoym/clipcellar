@@ -22,10 +22,12 @@ require "clipcellar/command"
 class CommandTest < Test::Unit::TestCase
   class << self
     def startup
-      @@tmpdir = File.join(File.dirname(__FILE__), "tmp", "database")
+      @@tmpdir_base = File.join(File.dirname(__FILE__), "tmp")
+      @@tmpdir = File.join(@@tmpdir_base, "database")
       FileUtils.rm_rf(@@tmpdir)
       FileUtils.mkdir_p(@@tmpdir)
       @@command = Clipcellar::Command.new
+      @@command.instance_variable_set(:@base_dir, @@tmpdir_base)
       @@command.instance_variable_set(:@database_dir, @@tmpdir)
     end
 
@@ -41,5 +43,11 @@ class CommandTest < Test::Unit::TestCase
     @@command.version
     assert_equal("#{Clipcellar::VERSION}\n", s)
     $stdout = STDOUT
+  end
+
+  def test_destroy
+    assert_true(File.exist?(@@tmpdir))
+    @@command.destroy
+    assert_false(File.exist?(@@tmpdir))
   end
 end

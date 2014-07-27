@@ -15,6 +15,7 @@
 # Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
 
 require "thor"
+require "fileutils"
 require "clipcellar/version"
 require "clipcellar/groonga_database"
 require "clipcellar/groonga_searcher"
@@ -90,6 +91,12 @@ module Clipcellar
         end
         Clipboard.set(text) if text
       end
+    end
+
+    desc "destroy", "Delete storage and all added texts"
+    def destroy
+      FileUtils.rm(Dir.glob(File.join(@database_dir, "clipcellar.db*")))
+      FileUtils.rmdir(@database_dir)
     end
 
     private

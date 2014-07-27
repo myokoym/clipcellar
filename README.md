@@ -49,9 +49,9 @@ Watch clipboard (Ctrl+C to stop)
 
     $ clipcellar watch
 
-Delete database
+Delete storage and all added texts
 
-    $ rm -r ~/.clipcellar
+    $ clipcellar destroy
 
 ## License
 
