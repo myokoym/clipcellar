@@ -18,7 +18,7 @@ require "gtk3"
 
 module Clipcellar
   class TreeView < Gtk::TreeView
-    KEY_COLUMN, TEXT_COLUMN, TIME_COLUMN, DATE_COLUMN, LINE_COLUMN = *0..4
+    KEY_COLUMN, TEXT_COLUMN, TIME_COLUMN, STRFTIME_COLUMN, LINE_COLUMN = *0..4
 
     def initialize(records)
       super()
@@ -74,7 +74,7 @@ module Clipcellar
       append_column(column)
       renderer = Gtk::CellRendererText.new
       column.pack_start(renderer, :expand => false)
-      column.add_attribute(renderer, :text, DATE_COLUMN)
+      column.add_attribute(renderer, :text, STRFTIME_COLUMN)
 
       column = Gtk::TreeViewColumn.new
       column.title = "Text (partial)"
@@ -91,7 +91,7 @@ module Clipcellar
       iter.set_value(KEY_COLUMN, record[:key])
       iter.set_value(TEXT_COLUMN, record[:text])
       iter.set_value(TIME_COLUMN, record[:time])
-      iter.set_value(DATE_COLUMN, record[:time].strftime("%Y-%m-%d %H:%M:%S"))
+      iter.set_value(STRFTIME_COLUMN, record[:time].strftime("%Y-%m-%d %H:%M:%S"))
       iter.set_value(LINE_COLUMN, record[:text][0..80].gsub(/[\n\t]/, " "))
     end
   end
