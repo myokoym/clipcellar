@@ -101,7 +101,9 @@ module Clipcellar
       records = []
       GroongaDatabase.new.open(@database_dir) do |database|
         reverse = options[:gui] ? true : false
-        sorted_clipboards = GroongaSearcher.search(database, words, :reverse => reverse)
+        sorted_clipboards = GroongaSearcher.search(database,
+                                                   words,
+                                                   :reverse => reverse)
 
         sorted_clipboards.each do |clipboard|
           record = {}
