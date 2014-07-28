@@ -61,6 +61,13 @@ module Clipcellar
       add(text)
     end
 
+    desc "delete ID", "Delete a text from data store"
+    def delete(id)
+      GroongaDatabase.new.open(@database_dir) do |database|
+        database.delete(id)
+      end
+    end
+
     desc "watch", "Watch clipboard to add clipboard to data store"
     def watch
       Clipboard.watch do |text|
