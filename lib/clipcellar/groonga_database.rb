@@ -45,7 +45,7 @@ module Clipcellar
       clipboards.add(id,
                 {
                   :text => text,
-                  :date => date,
+                  :created_at => date,
                 })
     end
 
@@ -85,7 +85,7 @@ module Clipcellar
       Groonga::Schema.define do |schema|
         schema.create_table("Clipboards", :type => :hash) do |table|
           table.text("text")
-          table.time("date")
+          table.time("created_at")
         end
 
         schema.create_table("Terms",

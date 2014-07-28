@@ -77,7 +77,7 @@ module Clipcellar
           record = {}
           record[:key] = clipboard._key
           record[:text] = clipboard.text
-          record[:time] = clipboard.date
+          record[:time] = clipboard.created_at
           records << record
         end
       end
@@ -106,7 +106,7 @@ module Clipcellar
           record = {}
           record[:key] = clipboard._key
           record[:text] = clipboard.text
-          record[:time] = clipboard.date
+          record[:time] = clipboard.created_at
           records << record
         end
       end
