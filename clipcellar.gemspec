@@ -8,8 +8,8 @@ Gem::Specification.new do |spec|
   spec.version       = Clipcellar::VERSION
   spec.authors       = ["Masafumi Yokoyama"]
   spec.email         = ["myokoym@gmail.com"]
-  spec.summary       = %q{Full-Text Searchable Storage for Clipboard}
-  spec.description   = %q{Clipcellar is a full-text searchable storage for clipboard by GTK+ (via Ruby/GTK3) and Groonga (via Rroonga).}
+  spec.summary       = %q{Full-Text Searchable Data Store for Clipboard}
+  spec.description   = %q{Clipcellar is a full-text searchable data store for clipboard by GTK+ (via Ruby/GTK3) and Groonga (via Rroonga).}
   spec.homepage      = "https://github.com/myokoym/clipcellar"
   spec.license       = "LGPLv2.1 or later"
 

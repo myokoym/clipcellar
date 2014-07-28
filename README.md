@@ -1,6 +1,6 @@
 # Clipcellar
 
-Clipcellar is a full-text searchable storage for clipboard.
+Clipcellar is a full-text searchable data store for clipboard.
 
 Powered by [GTK+][] (via [Ruby/GTK3][]) and [Groonga][] (via [Rroonga][]).
 
@@ -29,7 +29,7 @@ Show help
 
     $ clipcellar
 
-Add a text (or clipboard) to storage
+Add a text (or clipboard) to data store
 
     $ clipcellar set [TEXT]
 
@@ -37,7 +37,7 @@ Add a text from files (or stdin)
 
     $ clipcellar input [FILE]...
 
-Show added texts in storage
+Show added texts in data store
 
     $ clipcellar show
 
@@ -49,7 +49,7 @@ Watch clipboard (Ctrl+C to stop)
 
     $ clipcellar watch
 
-Delete storage and all added texts
+Delete data store and all added texts
 
     $ clipcellar destroy
 
