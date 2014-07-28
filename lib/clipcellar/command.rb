@@ -20,6 +20,7 @@ require "clipcellar/version"
 require "clipcellar/groonga_database"
 require "clipcellar/groonga_searcher"
 require "clipcellar/clipboard"
+require "clipcellar/window"
 
 module Clipcellar
   class Command < Thor
@@ -68,25 +69,56 @@ module Clipcellar
     end
 
     desc "show", "Show added texts in data store"
+    option :gui, :type => :boolean, :desc => "GUI mode"
     def show
+      records = []
       GroongaDatabase.new.open(@database_dir) do |database|
-        database.clipboards.each do |record|
-          text = record.text
-          date = record.date.strftime("%Y-%m-%d %H:%M:%S")
+        database.clipboards.each do |clipboard|
+          record = {}
+          record[:key] = clipboard._key
+          record[:text] = clipboard.text
+          record[:time] = clipboard.date
+          records << record
+        end
+      end
+
+      if options[:gui]
+        records.reverse!
+        window = Window.new(records)
+        window.run
+      else
+        records.each do |record|
+          text = record[:text]
+          date = record[:time].strftime("%Y-%m-%d %H:%M:%S")
           puts "#{date} #{text.gsub(/\n/, ' ')}"
         end
       end
     end
 
     desc "search WORD...", "Search texts from data store"
+    option :gui, :type => :boolean, :desc => "GUI mode"
     def search(*words)
+      records = []
       GroongaDatabase.new.open(@database_dir) do |database|
         sorted_clipboards = GroongaSearcher.search(database, words, options)
 
+        sorted_clipboards.each do |clipboard|
+          record = {}
+          record[:key] = clipboard._key
+          record[:text] = clipboard.text
+          record[:time] = clipboard.date
+          records << record
+        end
+      end
+
+      if options[:gui]
+        window = Window.new(records)
+        window.run
+      else
         text = nil
-        sorted_clipboards.each do |record|
-          text = record.text
-          date = record.date.strftime("%Y-%m-%d %H:%M:%S")
+        records.each do |record|
+          text = record[:text]
+          date = record[:time].strftime("%Y-%m-%d %H:%M:%S")
           puts "#{date} #{text.gsub(/\n/, ' ')}"
         end
         Clipboard.set(text) if text

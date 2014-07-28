@@ -41,9 +41,17 @@ Show added texts in data store
 
     $ clipcellar show
 
+or GUI mode
+
+    $ clipcellar show --gui
+
 Full-text search (and set a text to clipboard)
 
     $ clipcellar search WORD...
+
+or GUI mode
+
+    $ clipcellar search WORD... --gui
 
 Watch clipboard (Ctrl+C to stop)
 

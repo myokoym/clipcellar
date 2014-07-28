@@ -1,0 +1,98 @@
+# Copyright (C) 2014  Masafumi Yokoyama <myokoym@gmail.com>
+#
+# This library is free software; you can redistribute it and/or
+# modify it under the terms of the GNU Lesser General Public
+# License as published by the Free Software Foundation; either
+# version 2.1 of the License, or (at your option) any later version.
+#
+# This library is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+# Lesser General Public License for more details.
+#
+# You should have received a copy of the GNU Lesser General Public
+# License along with this library; if not, write to the Free Software
+# Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
+
+require "gtk3"
+
+module Clipcellar
+  class TreeView < Gtk::TreeView
+    KEY_COLUMN, TEXT_COLUMN, TIME_COLUMN, DATE_COLUMN, LINE_COLUMN = *0..4
+
+    def initialize(records)
+      super()
+      @records = records
+      @model = Gtk::ListStore.new(String, String, Time, String, String)
+      create_tree(@model)
+    end
+
+    def next
+      move_cursor(Gtk::MovementStep::DISPLAY_LINES, 1)
+    end
+
+    def prev
+      move_cursor(Gtk::MovementStep::DISPLAY_LINES, -1)
+    end
+
+    def selected_key
+      selected_iter.get_value(KEY_COLUMN)
+    end
+
+    def selected_text
+      selected_iter.get_value(TEXT_COLUMN)
+    end
+
+    def selected_time
+      selected_iter.get_value(TIME_COLUMN)
+    end
+
+    def selected_iter
+      @model.get_iter(selected_path)
+    end
+
+    def selected_path
+      selected = selection.selected
+      @model.get_path(selected)
+    end
+
+    private
+    def create_tree(model)
+      set_model(model)
+      self.search_column = TEXT_COLUMN
+      self.enable_search = false
+      self.rules_hint = true
+
+      selection.set_mode(:browse)
+
+      @records.each do |record|
+        load_record(model, record)
+      end
+
+      column = Gtk::TreeViewColumn.new
+      column.title = "Inserted Time"
+      append_column(column)
+      renderer = Gtk::CellRendererText.new
+      column.pack_start(renderer, :expand => false)
+      column.add_attribute(renderer, :text, DATE_COLUMN)
+
+      column = Gtk::TreeViewColumn.new
+      column.title = "Text (partial)"
+      append_column(column)
+      renderer = Gtk::CellRendererText.new
+      column.pack_start(renderer, :expand => false)
+      column.add_attribute(renderer, :text, LINE_COLUMN)
+
+      expand_all
+    end
+
+    def load_record(model, record)
+      iter = model.append
+      iter.set_value(KEY_COLUMN, record[:key])
+      iter.set_value(TEXT_COLUMN, record[:text])
+      iter.set_value(TIME_COLUMN, record[:time])
+      iter.set_value(DATE_COLUMN, record[:time].strftime("%Y-%m-%d %H:%M:%S"))
+      iter.set_value(LINE_COLUMN, record[:text][0..80].gsub(/[\n\t]/, " "))
+    end
+  end
+end
