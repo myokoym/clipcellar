@@ -25,39 +25,39 @@ Or install it yourself as:
 
 ## Usage
 
-Show help
+### Show help
 
     $ clipcellar
 
-Add a text (or clipboard) to data store
+### Add a text (or clipboard) to data store
 
     $ clipcellar set [TEXT]
 
-Add a text from files (or stdin)
+### Add a text from files (or stdin)
 
     $ clipcellar input [FILE]...
 
-Show added texts in data store
+### Show added texts in data store
 
     $ clipcellar show
 
-or GUI mode
+#### GUI mode
 
     $ clipcellar show --gui
 
-Full-text search (and set a text to clipboard)
+### Full-text search (and set a text to clipboard)
 
     $ clipcellar search WORD...
 
-or GUI mode
+#### GUI mode
 
     $ clipcellar search WORD... --gui
 
-Watch clipboard (Ctrl+C to stop)
+### Watch clipboard (Ctrl+C to stop)
 
     $ clipcellar watch
 
-Delete data store and all added texts
+### Delete data store and all added texts
 
     $ clipcellar destroy
 
