@@ -16,6 +16,7 @@
 
 require "gtk3"
 require "clipcellar/tree_view"
+require "clipcellar/command"
 
 module Clipcellar
   class Window < Gtk::Window
@@ -40,7 +41,7 @@ module Clipcellar
       @scrolled_window.add(@tree_view)
 
       @label = Gtk::Label.new
-      @label.text = "Press the Return key, then copy selected text to clipboard."
+      @label.text = "Return: copy to clipboard / Ctrl+d: delete from data store"
       @box.add(@label)
 
       define_key_bindings
@@ -96,6 +97,10 @@ module Clipcellar
         10.times { @tree_view.next }
       when Gdk::Keyval::GDK_KEY_p
         10.times { @tree_view.prev }
+      when Gdk::Keyval::GDK_KEY_d
+        # TODO: don't want to use Command class.
+        Command.new.delete(@tree_view.selected_key)
+        @tree_view.remove_selected_record
       else
         return false
       end

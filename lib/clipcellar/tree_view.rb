@@ -35,6 +35,10 @@ module Clipcellar
       move_cursor(Gtk::MovementStep::DISPLAY_LINES, -1)
     end
 
+    def remove_selected_record
+      @model.remove(selected_iter)
+    end
+
     def selected_key
       selected_iter.get_value(KEY_COLUMN)
     end
