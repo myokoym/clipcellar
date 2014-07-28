@@ -89,8 +89,8 @@ module Clipcellar
       else
         records.each do |record|
           text = record[:text]
-          date = record[:time].strftime("%Y-%m-%d %H:%M:%S")
-          puts "#{date} #{text.gsub(/\n/, ' ')}"
+          time = record[:time].strftime("%Y-%m-%d %H:%M:%S")
+          puts "#{time} #{text.gsub(/\n/, ' ')}"
         end
       end
     end
@@ -118,8 +118,8 @@ module Clipcellar
         text = nil
         records.each do |record|
           text = record[:text]
-          date = record[:time].strftime("%Y-%m-%d %H:%M:%S")
-          puts "#{date} #{text.gsub(/\n/, ' ')}"
+          time = record[:time].strftime("%Y-%m-%d %H:%M:%S")
+          puts "#{time} #{text.gsub(/\n/, ' ')}"
         end
         Clipboard.set(text) if text
       end
@@ -133,10 +133,10 @@ module Clipcellar
 
     private
     def add(text)
-      date = Time.now
-      id = date.strftime("%Y%m%d%H%M%S%L")
+      time = Time.now
+      id = time.strftime("%Y%m%d%H%M%S%L")
       GroongaDatabase.new.open(@database_dir) do |database|
-        database.add(id, text, date)
+        database.add(id, text, time)
       end
     end
   end

@@ -41,11 +41,11 @@ module Clipcellar
       end
     end
 
-    def add(id, text, date)
+    def add(id, text, time)
       clipboards.add(id,
                 {
                   :text => text,
-                  :created_at => date,
+                  :created_at => time,
                 })
     end
 
