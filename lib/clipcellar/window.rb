@@ -41,8 +41,12 @@ module Clipcellar
       @scrolled_window.add(@tree_view)
 
       @label = Gtk::Label.new
-      @label.text = "Return: copy to clipboard / Ctrl+d: delete from data store"
+      @label.text = "Double Click or Press Return: copy to clipboard / Ctrl+d: delete from data store"
       @box.add(@label)
+
+      @tree_view.signal_connect("row-activated") do |tree_view, path, column|
+        clipboard.text = @tree_view.get_text(path)
+      end
 
       define_key_bindings
     end

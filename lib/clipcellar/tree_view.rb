@@ -39,6 +39,10 @@ module Clipcellar
       @model.remove(selected_iter)
     end
 
+    def get_text(path)
+      @model.get_iter(path).get_value(TEXT_COLUMN)
+    end
+
     def selected_key
       selected_iter.get_value(KEY_COLUMN)
     end
