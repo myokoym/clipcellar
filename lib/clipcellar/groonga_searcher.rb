@@ -45,9 +45,9 @@ module Clipcellar
 
         order = options[:reverse] ? "ascending" : "descending"
         sorted_clipboards = selected_clipboards.sort([{
-                                               :key => "created_at",
-                                               :order => order,
-                                             }])
+                                                        :key => "created_at",
+                                                        :order => order,
+                                                      }])
 
         sorted_clipboards
       end
