@@ -14,7 +14,7 @@
 # License along with this library; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
 
-require "gtk3"
+require "gtk2"
 require "clipcellar/tree_view"
 require "clipcellar/command"
 
@@ -30,19 +30,19 @@ module Clipcellar
         Gtk.main_quit
       end
 
-      @box = Gtk::Box.new(:vertical)
-      add(@box)
+      @vbox = Gtk::VBox.new
+      add(@vbox)
 
       @scrolled_window = Gtk::ScrolledWindow.new
       @scrolled_window.set_policy(:automatic, :automatic)
-      @box.pack_start(@scrolled_window, :expand => true, :fill => true)
+      @vbox.pack_start(@scrolled_window, true, true, 0)
 
       @tree_view = TreeView.new(records)
       @scrolled_window.add(@tree_view)
 
       @label = Gtk::Label.new
       @label.text = "Double Click or Press Return: Copy to Clipboard / Ctrl+d: Delete from Data Store"
-      @box.add(@label)
+      @vbox.pack_start(@label, false, false, 0)
 
       @tree_view.signal_connect("row-activated") do |tree_view, path, column|
         clipboard.text = @tree_view.get_text(path)

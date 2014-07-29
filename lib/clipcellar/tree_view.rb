@@ -14,7 +14,7 @@
 # License along with this library; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
 
-require "gtk3"
+require "gtk2"
 require "erb"
 
 module Clipcellar
@@ -36,6 +36,7 @@ module Clipcellar
     end
 
     def remove_selected_record
+      return nil unless selected_iter
       @model.remove(selected_iter)
     end
 
@@ -44,24 +45,22 @@ module Clipcellar
     end
 
     def selected_key
+      return nil unless selected_iter
       selected_iter.get_value(KEY_COLUMN)
     end
 
     def selected_text
+      return nil unless selected_iter
       selected_iter.get_value(TEXT_COLUMN)
     end
 
     def selected_time
+      return nil unless selected_iter
       selected_iter.get_value(TIME_COLUMN)
     end
 
     def selected_iter
-      @model.get_iter(selected_path)
-    end
-
-    def selected_path
-      selected = selection.selected
-      @model.get_path(selected)
+      selection.selected
     end
 
     private

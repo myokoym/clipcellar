@@ -2,10 +2,10 @@
 
 Clipcellar is a full-text searchable data store for clipboard.
 
-Powered by [GTK+][] (via [Ruby/GTK3][]) and [Groonga][] (via [Rroonga][]).
+Powered by [GTK+][] (via [Ruby/GTK2][]) and [Groonga][] (via [Rroonga][]).
 
 [GTK+]:http://www.gtk.org/
-[Ruby/GTK3]:http://ruby-gnome2.sourceforge.jp/
+[Ruby/GTK2]:http://ruby-gnome2.sourceforge.jp/
 [Groonga]:http://groonga.org/
 [Rroonga]:http://ranguba.org/
 

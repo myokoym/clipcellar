@@ -9,7 +9,7 @@ Gem::Specification.new do |spec|
   spec.authors       = ["Masafumi Yokoyama"]
   spec.email         = ["myokoym@gmail.com"]
   spec.summary       = %q{Full-Text Searchable Data Store for Clipboard}
-  spec.description   = %q{Clipcellar is a full-text searchable data store for clipboard by GTK+ (via Ruby/GTK3) and Groonga (via Rroonga).}
+  spec.description   = %q{Clipcellar is a full-text searchable data store for clipboard by GTK+ (via Ruby/GTK2) and Groonga (via Rroonga).}
   spec.homepage      = "https://github.com/myokoym/clipcellar"
   spec.license       = "LGPLv2.1 or later"
 
@@ -18,7 +18,7 @@ Gem::Specification.new do |spec|
   spec.test_files    = spec.files.grep(%r{^(test|spec|features)/})
   spec.require_paths = ["lib"]
 
-  spec.add_runtime_dependency("gtk3")
+  spec.add_runtime_dependency("gtk2")
   spec.add_runtime_dependency("rroonga")
   spec.add_runtime_dependency("thor")
 
