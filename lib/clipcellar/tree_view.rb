@@ -100,7 +100,7 @@ module Clipcellar
       iter.set_value(TEXT_COLUMN, record[:text])
       iter.set_value(TIME_COLUMN, record[:time])
       iter.set_value(STRFTIME_COLUMN, record[:time].strftime("%Y-%m-%d %H:%M:%S"))
-      iter.set_value(LINE_COLUMN, record[:text].gsub(/[\n\t]/, " "))
+      iter.set_value(LINE_COLUMN, record[:text].gsub(/[\n\t]/, " ")) if record[:text]
       escaped_text = ERB::Util.html_escape(record[:text])
       iter.set_value(ESCAPED_TEXT_COLUMN, escaped_text)
     end
