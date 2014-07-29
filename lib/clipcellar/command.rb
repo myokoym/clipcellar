@@ -76,7 +76,7 @@ module Clipcellar
       end
     end
 
-    desc "show", "Show added texts in data store"
+    desc "show [--gui]", "Show added texts in data store"
     option :gui, :type => :boolean, :desc => "GUI mode"
     def show
       records = []
@@ -108,7 +108,7 @@ module Clipcellar
       end
     end
 
-    desc "search WORD...", "Search texts from data store"
+    desc "search WORD... [--gui]", "Search texts from data store"
     option :gui, :type => :boolean, :desc => "GUI mode"
     def search(required_word, *optional_words)
       words = [required_word]

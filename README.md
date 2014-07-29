@@ -39,19 +39,11 @@ Or install it yourself as:
 
 ### Show added texts in data store
 
-    $ clipcellar show
-
-#### GUI mode
-
-    $ clipcellar show --gui
+    $ clipcellar show [--gui]
 
 ### Full-text search (and set a text to clipboard)
 
-    $ clipcellar search WORD...
-
-#### GUI mode
-
-    $ clipcellar search WORD... --gui
+    $ clipcellar search WORD... [--gui]
 
 ### Watch clipboard (Ctrl+C to stop)
 
