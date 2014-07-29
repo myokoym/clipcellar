@@ -19,7 +19,7 @@ module Clipcellar
     class << self
       def search(database, words, options)
         clipboards = database.clipboards
-        clipboards = clipboards.select do |clipboard|
+        selected_clipboards = clipboards.select do |clipboard|
           expression = nil
           words.each do |word|
             sub_expression = (clipboard.text =~ word)
@@ -44,7 +44,7 @@ module Clipcellar
         end
 
         order = options[:reverse] ? "ascending" : "descending"
-        sorted_clipboards = clipboards.sort([{
+        sorted_clipboards = selected_clipboards.sort([{
                                                :key => "created_at",
                                                :order => order,
                                              }])
