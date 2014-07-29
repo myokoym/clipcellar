@@ -31,6 +31,8 @@ module Clipcellar
     map "-S" => :search
     map "-W" => :watch
 
+    attr_reader :database_dir
+
     def initialize(*args)
       super
       @base_dir = File.join(File.expand_path("~"), ".clipcellar")
@@ -59,13 +61,6 @@ module Clipcellar
       end
       Clipboard.set(text)
       add(text)
-    end
-
-    desc "delete ID", "Delete a text from data store"
-    def delete(id)
-      GroongaDatabase.new.open(@database_dir) do |database|
-        database.delete(id)
-      end
     end
 
     desc "watch", "Watch clipboard to add clipboard to data store"
