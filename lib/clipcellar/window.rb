@@ -45,7 +45,12 @@ module Clipcellar
       @vbox.pack_start(@label, false, false, 0)
 
       @tree_view.signal_connect("row-activated") do |tree_view, path, column|
-        clipboard.text = @tree_view.get_text(path)
+        text = @tree_view.get_text(path)
+        if /darwin/ =~ RUBY_PLATFORM
+          system("echo #{text} | pbcopy")
+        else
+        clipboard.text = text
+        end
       end
 
       define_key_bindings

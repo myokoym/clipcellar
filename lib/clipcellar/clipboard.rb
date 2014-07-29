@@ -42,15 +42,23 @@ module Clipcellar
       end
 
       def get
+        if /darwin/ =~ RUBY_PLATFORM
+          `pbpaste`
+        else
         clipboard.wait_for_text
+        end
       end
 
       def set(text)
+        if /darwin/ =~ RUBY_PLATFORM
+          system("echo #{text} | pbcopy")
+        else
         clipboard.text = text
         GLib::Timeout.add(1) do
           Gtk.main_quit
         end
         Gtk.main
+        end
       end
 
       def clipboard
