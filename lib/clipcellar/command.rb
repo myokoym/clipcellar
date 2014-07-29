@@ -102,7 +102,8 @@ module Clipcellar
         records.each do |record|
           text = record[:text]
           time = record[:time].strftime("%Y-%m-%d %H:%M:%S")
-          puts "#{time} #{text.gsub(/\n/, ' ')}"
+          formatted_text = text.gsub(/\n/, " ") if text
+          puts "#{time} #{formatted_text}"
         end
       end
     end
@@ -137,7 +138,8 @@ module Clipcellar
         records.each do |record|
           text = record[:text]
           time = record[:time].strftime("%Y-%m-%d %H:%M:%S")
-          puts "#{time} #{text.gsub(/\n/, ' ')}"
+          formatted_text = text.gsub(/\n/, " ") if text
+          puts "#{time} #{formatted_text}"
         end
         Clipboard.set(text) if text
       end
