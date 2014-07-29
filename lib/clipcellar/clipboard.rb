@@ -50,14 +50,27 @@ module Clipcellar
       end
 
       def set(text)
+        copy_to_clipboard(text)
+
+        # workaround for CLI
+        GLib::Timeout.add(1) do
+          Gtk.main_quit
+        end
+        Gtk.main
+      end
+
+      def copy_to_clipboard(text)
         if /darwin/ =~ RUBY_PLATFORM
-          system("echo #{text} | pbcopy")
+          require "tempfile"
+          Tempfile.open(["clipcellar", "w"]) do |file|
+            text.each_line do |line|
+              file.puts(line)
+            end
+            file.flush
+            system("pbcopy < #{file.path}")
+          end
         else
           clipboard.text = text
-          GLib::Timeout.add(1) do
-            Gtk.main_quit
-          end
-          Gtk.main
         end
       end
 

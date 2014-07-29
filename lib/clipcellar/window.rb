@@ -16,6 +16,7 @@
 
 require "gtk2"
 require "clipcellar/tree_view"
+require "clipcellar/clipboard"
 require "clipcellar/command"
 
 module Clipcellar
@@ -45,12 +46,7 @@ module Clipcellar
       @vbox.pack_start(@label, false, false, 0)
 
       @tree_view.signal_connect("row-activated") do |tree_view, path, column|
-        text = @tree_view.get_text(path)
-        if /darwin/ =~ RUBY_PLATFORM
-          system("echo #{text} | pbcopy")
-        else
-          clipboard.text = text
-        end
+        Clipboard.copy_to_clipboard(@tree_view.selected_text)
       end
 
       define_key_bindings
@@ -83,7 +79,7 @@ module Clipcellar
       when Gdk::Keyval::GDK_KEY_p
         @tree_view.prev
       when Gdk::Keyval::GDK_KEY_Return
-        clipboard.text = @tree_view.selected_text
+        Clipboard.copy_to_clipboard(@tree_view.selected_text)
       when Gdk::Keyval::GDK_KEY_h
         @scrolled_window.hadjustment.value -= 17
       when Gdk::Keyval::GDK_KEY_j
