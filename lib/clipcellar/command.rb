@@ -108,7 +108,10 @@ module Clipcellar
 
     desc "search WORD...", "Search texts from data store"
     option :gui, :type => :boolean, :desc => "GUI mode"
-    def search(*words)
+    def search(required_word, *optional_words)
+      words = [required_word]
+      words += optional_words
+
       records = []
       GroongaDatabase.new.open(@database_dir) do |database|
         reverse = options[:gui] ? true : false
