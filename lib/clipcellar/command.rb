@@ -89,6 +89,10 @@ module Clipcellar
         end
       end
 
+      records.sort_by! do |record|
+        record[:time]
+      end
+
       if options[:gui]
         records.reverse!
         window = Window.new(records)
