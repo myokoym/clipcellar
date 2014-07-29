@@ -70,6 +70,7 @@ module Clipcellar
 
     desc "watch", "Watch clipboard to add clipboard to data store"
     def watch
+      $stderr.puts("Watching... (Ctrl+C to Stop)")
       Clipboard.watch do |text|
         add(text)
       end
