@@ -45,7 +45,7 @@ module Clipcellar
         if /darwin/ =~ RUBY_PLATFORM
           `pbpaste`
         else
-        clipboard.wait_for_text
+          clipboard.wait_for_text
         end
       end
 
@@ -53,11 +53,11 @@ module Clipcellar
         if /darwin/ =~ RUBY_PLATFORM
           system("echo #{text} | pbcopy")
         else
-        clipboard.text = text
-        GLib::Timeout.add(1) do
-          Gtk.main_quit
-        end
-        Gtk.main
+          clipboard.text = text
+          GLib::Timeout.add(1) do
+            Gtk.main_quit
+          end
+          Gtk.main
         end
       end
 

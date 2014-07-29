@@ -49,7 +49,7 @@ module Clipcellar
         if /darwin/ =~ RUBY_PLATFORM
           system("echo #{text} | pbcopy")
         else
-        clipboard.text = text
+          clipboard.text = text
         end
       end
 
