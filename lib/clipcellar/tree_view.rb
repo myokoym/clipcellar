@@ -23,9 +23,8 @@ module Clipcellar
 
     def initialize(records)
       super()
-      @records = records
       @model = Gtk::ListStore.new(String, String, Time, String, String, String)
-      create_tree(@model)
+      create_tree(@model, records)
     end
 
     def next
@@ -66,7 +65,7 @@ module Clipcellar
     end
 
     private
-    def create_tree(model)
+    def create_tree(model, records)
       set_model(model)
       self.search_column = TEXT_COLUMN
       self.enable_search = false
@@ -75,7 +74,7 @@ module Clipcellar
 
       selection.set_mode(:browse)
 
-      @records.each do |record|
+      records.each do |record|
         load_record(model, record)
       end
 
