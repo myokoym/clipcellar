@@ -39,7 +39,7 @@ Or install it yourself as:
 
 ### Show added texts in data store
 
-    $ clipcellar show [--gui]
+    $ clipcellar show [--lines=N] [--gui]
 
 ### Full-text search (and set a text to clipboard)
 

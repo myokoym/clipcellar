@@ -73,6 +73,7 @@ module Clipcellar
 
     desc "show [--gui]", "Show added texts in data store"
     option :gui, :type => :boolean, :aliases => "-g", :desc => "GUI mode"
+    option :lines, :type => :numeric, :aliases => "-n", :desc => "Number of lines"
     def show
       records = []
       GroongaDatabase.new.open(@database_dir) do |database|
@@ -87,6 +88,12 @@ module Clipcellar
 
       records.sort_by! do |record|
         record[:time]
+      end
+
+      if options[:lines]
+        records.reverse!
+        records = records.take(options[:lines])
+        records.reverse!
       end
 
       if options[:gui]
