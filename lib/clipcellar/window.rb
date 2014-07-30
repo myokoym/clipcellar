@@ -103,11 +103,14 @@ module Clipcellar
       when Gdk::Keyval::GDK_KEY_p
         10.times { @tree_view.prev }
       when Gdk::Keyval::GDK_KEY_d
+        key = @tree_view.selected_key
+        if key
         # TODO: don't want to use Command class.
         GroongaDatabase.new.open(Command.new.database_dir) do |database|
-          database.delete(@tree_view.selected_key)
+          database.delete(key)
         end
         @tree_view.remove_selected_record
+        end
       else
         return false
       end
