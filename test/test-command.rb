@@ -48,6 +48,36 @@ class CommandTest < Test::Unit::TestCase
       FileUtils.rm_rf(@tmpdir)
     end
 
+    def test_set
+      # TODO
+      assert_nothing_raised do
+        @command.set("text")
+      end
+    end
+
+    def test_input
+      # TODO
+      assert_nothing_raised do
+        ARGV.push("input")
+        ARGV.push(__FILE__)
+        @command.input
+      end
+    end
+
+    def test_show
+      # TODO
+      assert_nothing_raised do
+        @command.show
+      end
+    end
+
+    def test_search
+      # TODO
+      assert_nothing_raised do
+        @command.search("word")
+      end
+    end
+
     def test_destroy
       assert_true(File.exist?(@tmpdir))
       @command.destroy
