@@ -20,34 +20,38 @@ require "clipcellar/version"
 require "clipcellar/command"
 
 class CommandTest < Test::Unit::TestCase
-  class << self
-    def startup
-      @@tmpdir_base = File.join(File.dirname(__FILE__), "tmp")
-      @@tmpdir = File.join(@@tmpdir_base, "database")
-      FileUtils.rm_rf(@@tmpdir)
-      FileUtils.mkdir_p(@@tmpdir)
-      @@command = Clipcellar::Command.new
-      @@command.instance_variable_set(:@base_dir, @@tmpdir_base)
-      @@command.instance_variable_set(:@database_dir, @@tmpdir)
-    end
-
-    def shutdown
-      FileUtils.rm_rf(@@tmpdir)
-    end
+  def setup
+    @command = Clipcellar::Command.new
   end
 
   def test_version
     s = ""
     io = StringIO.new(s)
     $stdout = io
-    @@command.version
+    @command.version
     assert_equal("#{Clipcellar::VERSION}\n", s)
     $stdout = STDOUT
   end
 
-  def test_destroy
-    assert_true(File.exist?(@@tmpdir))
-    @@command.destroy
-    assert_false(File.exist?(@@tmpdir))
+  class DatabaseTest < self
+    def setup
+      @tmpdir_base = File.join(File.dirname(__FILE__), "tmp")
+      @tmpdir = File.join(@tmpdir_base, "database")
+      FileUtils.rm_rf(@tmpdir)
+      FileUtils.mkdir_p(@tmpdir)
+      super
+      @command.instance_variable_set(:@base_dir, @tmpdir_base)
+      @command.instance_variable_set(:@database_dir, @tmpdir)
+    end
+
+    def teardown
+      FileUtils.rm_rf(@tmpdir)
+    end
+
+    def test_destroy
+      assert_true(File.exist?(@tmpdir))
+      @command.destroy
+      assert_false(File.exist?(@tmpdir))
+    end
   end
 end
