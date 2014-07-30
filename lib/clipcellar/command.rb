@@ -72,7 +72,7 @@ module Clipcellar
     end
 
     desc "show [--gui]", "Show added texts in data store"
-    option :gui, :type => :boolean, :desc => "GUI mode"
+    option :gui, :type => :boolean, :aliases => "-g", :desc => "GUI mode"
     def show
       records = []
       GroongaDatabase.new.open(@database_dir) do |database|
@@ -104,7 +104,7 @@ module Clipcellar
     end
 
     desc "search WORD... [--gui]", "Search texts from data store"
-    option :gui, :type => :boolean, :desc => "GUI mode"
+    option :gui, :type => :boolean, :aliases => "-g", :desc => "GUI mode"
     def search(required_word, *optional_words)
       words = [required_word]
       words += optional_words
