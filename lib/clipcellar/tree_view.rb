@@ -83,6 +83,7 @@ module Clipcellar
       renderer = Gtk::CellRendererText.new
       column.pack_start(renderer, :expand => false)
       column.add_attribute(renderer, :text, STRFTIME_COLUMN)
+      column.set_sort_column_id(STRFTIME_COLUMN)
 
       column = Gtk::TreeViewColumn.new
       column.title = "Part of a Text (the Full Text appears in a Tooltip)"
@@ -90,6 +91,7 @@ module Clipcellar
       renderer = Gtk::CellRendererText.new
       column.pack_start(renderer, :expand => false)
       column.add_attribute(renderer, :text, LINE_COLUMN)
+      column.set_sort_column_id(LINE_COLUMN)
 
       expand_all
     end
