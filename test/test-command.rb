@@ -78,6 +78,13 @@ class CommandTest < Test::Unit::TestCase
       end
     end
 
+    def test_uniq
+      # TODO
+      assert_nothing_raised do
+        @command.uniq
+      end
+    end
+
     def test_destroy
       assert_true(File.exist?(@tmpdir))
       @command.destroy

@@ -49,6 +49,10 @@ Or install it yourself as:
 
     $ clipcellar watch
 
+### Delete duplecated texts from data store
+
+    $ clipcellar uniq
+
 ### Delete data store and all added texts
 
     $ clipcellar destroy

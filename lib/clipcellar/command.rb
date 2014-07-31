@@ -147,6 +147,33 @@ module Clipcellar
       end
     end
 
+    desc "uniq", "Delete duplicated texts from data store"
+    def uniq
+      records = []
+      GroongaDatabase.new.open(@database_dir) do |database|
+        database.clipboards.each do |clipboard|
+          record = {}
+          record[:key] = clipboard._key
+          record[:text] = clipboard.text
+          record[:time] = clipboard.created_at
+          records << record
+        end
+      end
+
+      records.sort_by! do |record|
+        record[:time]
+      end
+      records.reverse!
+
+      records_will_be_deleted = records - records.uniq {|record| record[:text] }
+
+      GroongaDatabase.new.open(@database_dir) do |database|
+        records_will_be_deleted.each do |record|
+          database.delete(record[:key])
+        end
+      end
+    end
+
     desc "destroy", "Delete data store and all added texts"
     def destroy
       FileUtils.rm(Dir.glob(File.join(@database_dir, "clipcellar.db*")))
