@@ -19,7 +19,7 @@ Gem::Specification.new do |spec|
   spec.require_paths = ["lib"]
 
   spec.add_runtime_dependency("gtk2")
-  spec.add_runtime_dependency("rroonga")
+  spec.add_runtime_dependency("rroonga", ">= 2.1.0")
   spec.add_runtime_dependency("thor")
 
   spec.add_development_dependency("test-unit")
