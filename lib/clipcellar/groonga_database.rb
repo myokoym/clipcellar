@@ -90,7 +90,7 @@ module Clipcellar
 
         schema.create_table("Terms",
                             :type => :patricia_trie,
-                            :key_normalize => true,
+                            :normalizer => "NormalizerAuto",
                             :default_tokenizer => "TokenBigram") do |table|
           table.index("Clipboards.text")
         end
